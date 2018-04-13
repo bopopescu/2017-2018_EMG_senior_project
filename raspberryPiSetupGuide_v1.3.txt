@@ -1,0 +1,259 @@
+% TITLE: Raspberry Pi Setup Guide
+% AUTHOR: Aditya Patel
+% DATE: 2018-04-12
+% VERSION: 2.0
+% NOTE: 
+% 	Contact me at abpatel2@mail.bradley.edu if you have any questions
+%	
+%	This is not comprehensive. I tried my best to keep up with everything I did, but sometimes
+%	we start trying and testing different packages and tools at such a rate that it is tough to 
+%	document every step. And once the correct tool is found, I forget to go back and write down
+%	how we set it up. 
+% 
+% 	All development was done using Python 2.7.14. 
+
+***************************************************************************************
+								Initial Setup
+***************************************************************************************
+
+	- Download the Raspbian OS from https://www.raspberrypi.org/downloads/raspbian/
+		- In 2018, we used Kernel version 4.9, released 2017-11-29
+		- note: the OS download does not need to be unzipped if using Etcher
+		
+	- Download Etcher from https://etcher.io/
+		- Flash the OS image onto an SD card using Etcher. It will overwrite any contents of the card. We used a 16 GB micro SD. 
+		
+	- Connect all desired peripherals. This OS *can* run in a headless configuration, but it is easier with a GUI
+		- Raspberry Pi Camera Module v2 (blue band facing LAN port)
+		- USB Mouse
+		- USB Keyboard
+		- HDMI Display
+		- Ethernet cable
+		- 5-port ethernet switch
+		
+	- Power on the Pi
+	
+***************************************************************************************
+								Network and Camera Configuration
+***************************************************************************************
+
+	- Open a web browser (Chromium by default)
+	
+	- Try to open a webpage
+		- If on a local/personal network, there should be no issue
+		- If connected to an ethernet port in the ECE lab, you may need to register your device. 
+			- You should get rerouted to https://netreg.bradley.edu where you can follow the instructions on the screen.
+			
+		- If not rerouted to https://netreg.bradley.edu, you need your MAC address. See below.
+			$ ifconfig -a 		// This command will show you all the internet information
+			Listed under the "eth0" section will be your MAC address
+			
+			Example:
+			
+				eth0:	flags=4163<UP,BROADCAST,RUNNING,MULTICAST> mtu 1500
+							inet6 fe80::a:bf2f:ee84:7789 prefixlen 64 scopeid 0x20<link>
+							ether b8:27:eb:32:bb:d3 txqueuelen 1000 (Ethernet)				
+									^^^^^ This is the MAC address for ethernet. If you want to register it on BUother, find the section like this under "wlan0"
+			- Once you have the MAC address, call the Tech Help Desk: 309-677-2964 and ask to register manually. 
+			
+			
+	- Proceed once you have a working internet connection. 
+			
+	- Open the Terminal (all terminal commands will be denoted with a $)
+	
+	$ sudo raspi-config
+	
+	- The configuration menu changes with different operating systems. 
+		- Use your best judgment to navigate to the peripherals page.
+		- Enable ssh and the camera module
+	
+	$ sudo reboot
+
+	- Open the terminal again
+	
+	$ sudo apt-get update
+	
+	$ sudo apt-get upgrade			// Takes a long time
+	
+	$ sudo apt-get dist-upgrade		// Takes a long time
+	
+	- Reference: Raspberry Pi Cam Web Interface: https://elinux.org/RPi-Cam-Web-Interface
+	
+	$ git clone https://github.com/silvanmelchior/RPi_Cam_Web_Interface.git
+	
+	$ cd /home/pi/RPi_Cam_Web_Interface
+	
+	$ ./install.sh
+		- There is a default option for the xCam subfolder to be called "html"
+			- This can be changed to a name of your choice, but I did not bother
+		- The rest of the Configuration options do not need to be changed. 
+	
+	$ ifconfig
+		- this prints all the details of the network on the pi
+		- if using ethernet, the IP address is listed in the "eth0" section, beginning with "inet addr:"
+		- Write down the IP address for later use
+	
+	$ ln -s /home/pi/RPi_Cam_Web_Interface /home/pi/camera
+		- This is not necessary, but mostly for convenience
+		- It creates a link to the RPi_Cam_Web_Interface folder, with a shorter name, "camera"
+	
+	$ cd /home/pi/camera
+	
+	$ ls -l
+		- confirm that all the files are in this shortcut folder
+	
+	$ ./start.sh
+		- starts the camera software
+		
+	- navigate to the raspberry pi URL you setup when installing the camera interface
+	
+	$ sudo apt-get install firefox-esr
+		- Install firefox. It is cleaner in Linux than Chromium -- less processes to deal with, and no warnings when automatically killing it
+	
+	$ sudo apt-get install xdotool
+		- A package of commands that allow you to simulate keyboard and mouse actions via SSH
+		- Reference Doc: http://theembeddedlab.com/tutorials/simulate-keyboard-mouse-events-xdotool-raspberry-pi/
+	
+***************************************************************************************
+							Using PuTTY
+***************************************************************************************
+	
+	- Open PuTTY
+	
+	- In "Hostname" enter "pi@136.176.106.194" (the IP address will change based on the board)
+	
+	- No other settings will change
+	
+	- Connect and login to the pi. 
+	
+		- To open the video stream in a browser from a remote connection
+			$ who
+				- https://raspberrypi.stackexchange.com/questions/27876/can-i-run-a-terminal-command-from-ssh-to-open-the-browser-on-x-server
+				- The display identifier is in parenthesis at the end, in this case :0. You need to set that in the environment of your ssh session. 
+				
+			- For most shells including bash (the default on raspbian):
+			$ export DISPLAY=:0
+			
+			$ chromium-browser http://my_ip_address/html/ &
+				- The ampersand is needed so that you can continue to enter commands in the shell without closing the browser window
+
+	- Disable password requirement on login
+		- https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys--2
+		On the main machine (assuming linux environment)
+			$ ssh-keygen -t rsa
+			
+			# (Output)
+				Generating public/private rsa key pair.
+				Enter file in which to save the key: /home/pi/.ssh/id_rsa
+				Enter passphrase (empty for no passphrase): 
+				Enter same passphrase again: 
+				Your identification has been saved in /home/pi/.ssh/id_rsa.
+				Your public key has been saved in /home/pi/.ssh/id_rsa.
+				The key fingerprint is:
+				4a:dd:0a:c6:35:4e:3f:ed:27:38:8c:74:44:4d:93:67 demo@a
+				The key's randomart image is:
+				+--[ RSA 2048]----+
+				|          .oo.   |
+				|         .  o.E  |
+				|        + .  o   |
+				|     . = = .     |
+				|      = S = .    |
+				|     o + = +     |
+				|      . o + o .  |
+				|           . o   |
+				|                 |
+				+-----------------+
+			$ ssh-copy-id pi@169.254.184.5
+			
+		Now, you can execute any command on the remote machine using:
+			$ ssh pi@169.254.184.5 ls -l
+			
+	- To make things easier, and to have multiple ssh keys on one server machine
+		1. Create another key using the above guide. Name it anything you want. Convention is id_rsa_xxx
+		2. Edit the ~/.ssh/config file
+			a. It may not already exist, so you can create it. 
+			b. For this project, my file looked like this:
+				
+				Host emgPi_2
+				HostName 169.254.13.230
+				IdentityFile /home/pi/.ssh/id_rsa
+				User pi
+
+				Host emgPi_1
+				HostName 169.254.184.5
+				IdentityFile /home/pi/.ssh/id_rsa_1
+				User pi
+				
+			c. This allowed me to use the below command to easily connect to my machine without a password or needing to remember the IP		
+				$ ssh emgPi_1 insert_command_here
+			
+
+***************************************************************************************
+								Useful Terminal Commands and Links
+***************************************************************************************
+	
+	$ pkill processName
+		- Kills all processes with the process name in it
+	
+	$ cat /path/to/your/file.txt
+		- Shows the contents of a file in the terminal
+		
+	$ sudo nano /path/to/your/file.txt
+		- Edit a file in the terminal. Limited functionality, but it's good in PuTTY
+	
+	$ xdotool click 1
+		- Simulates a mouse click
+		
+	$ xdotool key ctrl+Tab
+		- can simulate any key press, including function keys
+	
+	- This is a Windows cmd command to copy a file from local to remote
+		$ pscp e:\MotorsPWM.py pi@136.176.119.77:/home/pi/Documents
+		$ pscp **local file path** username@hostIPaddress:**remote file path**
+		UPDATE: I downloaded and used filezilla to save time. It allows me to click and drag a file to the remote machine. 
+		Download Filezilla here: https://filezilla-project.org/
+	
+	Used for Mouse Control:
+		[1] https://stackoverflow.com/questions/8480073/how-would-i-get-the-current-mouse-coordinates-in-bash
+		[2] tuxradar.com/content/xdotool-script-your-mouse 
+	
+	Used for task scheduling (never really used it)
+		[1]https://crontab.guru/#*/5_*_*_*_*
+		[2] http://kvz.io/blog/2007/07/29/schedule-tasks-on-linux-using-crontab/
+		
+	By default, the raspberry pi display goes to sleep on its own. This is to prevent that. I don't remember which one actually worked. Good Luck.    
+		[1] https://www.bitpi.co/2015/02/14/prevent-raspberry-pi-from-sleeping/
+		[2] https://unix.stackexchange.com/questions/91249/script-to-prevent-screen-blanking-using-mouse-move-doesnt-work
+	
+***************************************************************************************
+								Pyo_Connect_v2.0
+***************************************************************************************
+
+	Useful Open Source Material
+		[1] http://www.fernandocosentino.net/pyoconnect/
+		[2] https://github.com/dzhu/myo-raw
+		[3] http://nullege.com/codes/search?cq=pygame
+
+    $ python PyoConnectLib.pyc | python myo_read.py
+        - Command to run to start running the data collection and analysis script
+        - ***This is no longer relevant ***, as we have pivoted to a new method (20180328)
+		
+***************************************************************************************
+								Local Area Network (LAN)
+***************************************************************************************
+    
+	$ sudo apt-get install avahi-daemon avahi-utils
+        $ avahi-browse -a 
+            - this shows all the devices on the LAN. Originally, this should show nothing. Or maybe just the Pi itself.
+            
+        $ sudo nano /etc/avahi/avahi-daemon.conf
+            - http://manpages.ubuntu.com/manpages/trusty/man5/avahi-daemon.conf.5.html
+            - Find the option below and set it as shown, making sure to uncomment. 
+                # publish-workstation=yes
+            - This makes this device visible to other devices on the network. It is a good way to verify that everything is communicating effectively. 
+        
+        - After doing this on all the raspberry pi's you want, run the next command. You should see each board. 
+            $ avahi-browse -a
+	
+
+
