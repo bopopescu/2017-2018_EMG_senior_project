@@ -34,7 +34,7 @@ class Calibrate():
 		self.data = []
 		self.sums = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 		self.avg = []
-		# self.avg = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])						# this has to be a numpy array to use the 'divide' function below
+		# self.avg = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])					# this has to be a numpy array to use the 'divide' function below
 		self.groupingAvg = []
 		
 	''' 
@@ -75,7 +75,7 @@ class Calibrate():
 			for i in range(startIndex, startIndex + 3):
 				
 				if ( i > 7 ):
-					i %= 8										# if i exceeds the range of the data, do the modulus operator. This allows for groupings 781 and 812 to work. 
+					i %= 8																# if i exceeds the range of the data, do the modulus operator. This allows for groupings 781 and 812 to work. 
 				sum += self.avg[i]
 				i += 1
 			
@@ -94,7 +94,7 @@ class Calibrate():
 		self.getAvg()
 		self.getGroupingAvg()
 		
-		array = np.array(self.groupingAvg)									# REFERENCE: https://stackoverflow.com/questions/5284646/rank-items-in-an-array-using-python-numpy
+		array = np.array(self.groupingAvg)												# REFERENCE: https://stackoverflow.com/questions/5284646/rank-items-in-an-array-using-python-numpy
 		temp = array.argsort()
 		ranks = np.empty_like(temp)
 		ranks[temp] = np.arange(len(array))
