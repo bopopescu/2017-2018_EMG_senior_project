@@ -17,11 +17,9 @@ Please refer to our website: http://ee.bradley.edu/projects/proj2018/emg for fur
 working project.
 
 ## Hardware Diagram
-![Hardware Diagram](https://raw.githubusercontent.com/abpatel2/2017-2018_EMG_senior_project/master/00-Documentation/HardwareDiagram_20180404.png)
+![Hardware Diagram](https://raw.githubusercontent.com/abpatel2/2017-2018_EMG_senior_project/master/00-Documentation/HardwareDiagram_20180415.png)
 Please refer to the setup guide in the documentation folder to see how we configured the three Raspberry Pi computers used in this project. 
 
 ## System Flowchart
-![System Flowchart](https://raw.githubusercontent.com/abpatel2/2017-2018_EMG_senior_project/master/00-Documentation/FlowChart_20180404.png)
+![System Flowchart](https://raw.githubusercontent.com/abpatel2/2017-2018_EMG_senior_project/master/00-Documentation/FlowChart_20180415.png)
 
-## System Flowchart
-![System Flowchart](http://ee.bradley.edu/projects/proj2018/emg/FlowChart_20180415.png)
