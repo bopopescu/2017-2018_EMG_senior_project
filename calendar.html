@@ -1,0 +1,91 @@
+<!--  
+  -- Created By: Aditya Patel and James Ramsay
+  -- Organization: Bradley University ECE
+  -- Project: 2017-2018 EMG HMI
+  -- Filename: calendar.html
+ */-->
+
+ 
+ <!--------------------------------------------------------------------
+							INITIALIZATION
+--------------------------------------------------------------------->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Calendar: EMG 2017-2018</title>
+	<base href = "http://ee.bradley.edu/projects/proj2018/emg/" target = "_self">
+	<link rel = "stylesheet" href = "emgStyle.css?version=1.0.4"/> <!-- update the version number every time a change is made -->
+	<link rel = "icon" href = "favicon.ico" type = "image/x-icon">
+	<meta charset = "UTF-8">
+	
+	<!-- Prevent Browser Caching -->
+	<!-- <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> -->
+	<meta http-equiv="pragma" content="no-cache" />
+	<!-- <meta http-equiv="refresh" content="0" /> -->
+</head>
+
+<!--------------------------------------------------------------------
+							MAIN
+--------------------------------------------------------------------->
+<body>
+	<div class = "bradleyLogo">
+		<a href = "https://www.bradley.edu/academic/departments/electrical/">
+			<img 
+			src = "https://www.bradley.edu/dotAsset/6b01d8de-36f7-498f-8e6c-05101f0206c6.png"
+			alt = "Bradley University Electrical Engineering"
+			height = "60" 
+			width = "180">
+		</a>
+	</div>
+
+	<div id = "mySidenav" class= "sidenav">
+		<a href = "./">Home</a>
+		<a href = "finalReport">Final Report</a>
+		<a href = "proposal">Proposal</a>
+		<a href = "code">Code</a>
+		<a href = "projectManagement">Project<br/>Management</a>
+		<a href = "calendar">Calendar</a>
+		<a href = "aboutUs">About</a>
+	</div>
+
+	<div id = "myTopmenu" class = "topmenu">
+		<!-- Header In Link (not Link in Header)-->
+		<a href="http://ee.bradley.edu/projects/proj2018/emg">
+			<h1>
+				EMG-Based Human Machine Interface
+			</h1>
+		</a>
+	</div>
+
+
+	<div id = "mainBody" class = "mainBody">
+
+		<header1 style = "padding-bottom:0;">Calendar</header1>
+		<br/>
+		<iframe 
+			class = "calendar" 
+			src="https://calendar.google.com/calendar/embed?src=mail.bradley.edu_vpfdkp3tjduh524f3uht5dhfhc%40group.calendar.google.com&ctz=America/Chicago&amp;showTitle=0&amp;color=%23711616&amp;showTz=0&amp;showPrint=0" 
+			style="border: 0" 
+			width="1000" 
+			height="500" 
+			frameborder="0" 
+			scrolling="no">
+		</iframe>
+
+	</div>
+
+	
+<!-- This is the javascript portion of the page -->
+<script>
+
+	<!-- function refreshFromServer() -->
+	<!-- { -->
+		<!-- location.reload(true); -->
+	<!-- } -->
+	
+</script>
+     
+</body>
+</html> 
+
+

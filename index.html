@@ -1,0 +1,121 @@
+<!--  
+  -- Created By: Aditya Patel and James Ramsay
+  -- Organization: Bradley University ECE
+  -- Project: 2017-2018 EMG HMI
+  -- Filename: index.html 
+ */-->
+
+ <!--------------------------------------------------------------------
+							INITIALIZATION
+--------------------------------------------------------------------->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home: EMG 2017-2018</title>
+	<base href = "http://ee.bradley.edu/projects/proj2018/emg/" target = "_self">
+	<link rel = "stylesheet" href = "emgStyle.css?version=1.0.4"/> <!-- update the version number every time a change is made -->
+	<link rel = "icon" href = "favicon.ico" type = "image/x-icon">
+	<meta charset = "UTF-8">
+	
+	<!-- Prevent Browser Caching -->
+	<!-- <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> -->
+	<meta http-equiv="pragma" content="no-cache" />
+	<!-- <meta http-equiv="refresh" content="0" /> -->
+</head>
+
+<!--------------------------------------------------------------------
+							MAIN
+--------------------------------------------------------------------->
+<body>
+	<div class = "bradleyLogo">
+		<a href = "https://www.bradley.edu/academic/departments/electrical/">
+			<img 
+			src = "https://www.bradley.edu/dotAsset/6b01d8de-36f7-498f-8e6c-05101f0206c6.png"
+			alt = "Bradley University Electrical Engineering"
+			height = "60" 
+			width = "180">
+		</a>
+	</div>
+
+
+	<div id = "mySidenav" class= "sidenav">
+		<a href = "./">Home</a>
+		<a href = "finalReport">Final Report</a>
+		<a href = "proposal">Proposal</a>
+		<a href = "code">Code</a>
+		<a href = "projectManagement">Project<br/>Management</a>
+		<a href = "calendar">Calendar</a>
+		<a href = "aboutUs">About</a>
+	</div>
+
+	<div id = "myTopmenu" class = "topmenu">
+		<!-- Header In Link (not Link in Header)-->
+		<a href="./">
+			<h1>
+				EMG-Based Human Machine Interface
+			</h1>
+		</a>
+	</div>
+
+	<div id="mainBody1" class = "mainBody">
+		<!-- The below line is a placeholder for proper white space -->
+		<header1>Home</header1> 
+		
+		<div id = "textBox1" class = "textBox">
+			<h1>Introduction</h1>
+				<p>
+					Surface Electromyography (EMG) is a non-invasive technique which records the electrical activity of muscles through 
+					electrodes placed directly on the arm. This project aims to develop an EMG-based control system. A Myo Armband, 
+					containing eight electrode pairs, wirelessly transmits EMG data to a central controller, which runs conditional 
+					logic functions to identify three different user hand gestures. The commands are used to remotely pan individual 
+					cameras and select from multiple video feeds. Our study demonstrates that EMG-based gesture control is a viable 
+					human-machine interface option for a variety of applications in the industrial, medical, and consumer markets. 
+				</p>
+			<h1>System Flow Chart</h1>
+				<img width = "854" height = "373" src="FlowChart_20180415.png" alt="flowchart" align="middle" style="text-decoration:none;margin-left:50px">
+			
+			<h1>System Hardware Diagram</h1>
+				<img width = "854" height = "341" src="HardwareDiagram_20180415.png" alt="hardware" align="middle" style="text-decoration:none;margin-left:50px">
+			
+			<h1>Demo Videos<h1>
+				<h2>
+					Demo of Servo and Camera Control -- March 25, 2018
+				</h2>
+				<p style="text-decoration:none;margin-left:50px">
+					The cameras aboard Pi#1 and Pi#2 are commanded to move by Pi#3. Pi#3 also switches the displayed camera feed.<br/><br/>
+					<iframe width="854" height="480" align="middle"  src="https://www.youtube.com/embed/tpzUYJjg81U" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</p>
+				
+				<h2>
+					<br/>Real-Time Visualization of EMG Signals -- March 03, 2018
+				</h2>
+				<p style="text-decoration:none;margin-left:50px">
+					This video shows a heat map of the eight EMG sensors in real time. As the user executes different gestures, the displayed pattern of EMG activity changes. <br/><br/>
+					<iframe width="854" height="480" align="middle" src="https://www.youtube.com/embed/p9lkXUoYe-s" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</p>
+				
+				
+				<h2>
+					<br/>Preliminary Demo of Servo and Camera Control -- February 26, 2018
+				</h2>
+				<p style="text-decoration:none;margin-left:50px">
+					<iframe width="854" height="480" align="middle" src="https://www.youtube.com/embed/IrC3-DUNRUc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+				</p>
+			
+		</div>
+	</div>
+
+<!-- This is the javascript portion of the page -->
+<script>
+
+	<!-- function refreshFromServer() -->
+	<!-- { -->
+		<!-- location.reload(true); -->
+	<!-- } -->
+	
+</script>
+     
+</body>
+</html> 
+
+

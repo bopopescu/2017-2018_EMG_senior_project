@@ -1,0 +1,594 @@
+<!--  
+  -- Created By: Aditya Patel and James Ramsay
+  -- Organization: Bradley University ECE
+  -- Project: 2017-2018 EMG HMI
+  -- Filename: proposal.html 
+ */-->
+
+ 
+ <!--------------------------------------------------------------------
+							INITIALIZATION
+--------------------------------------------------------------------->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Proposal: EMG 2017-2018</title>
+	<base href = "http://ee.bradley.edu/projects/proj2018/emg/" target = "_self">
+	<link rel = "stylesheet" href = "emgStyle.css?version=1.0.4"/> <!-- update the version number every time a change is made -->
+	<link rel = "icon" href = "favicon.ico" type = "image/x-icon">
+	<meta charset = "UTF-8">
+	
+	<!-- Prevent Browser Caching -->
+	<!-- <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> -->
+	<meta http-equiv="pragma" content="no-cache" />
+	<!-- <meta http-equiv="refresh" content="0" /> This caused the page to refresh nonstop. Don't do this --> 
+</head>
+
+<!--------------------------------------------------------------------
+							MAIN
+--------------------------------------------------------------------->
+<body>
+	<div class = "bradleyLogo">
+		<a href = "https://www.bradley.edu/academic/departments/electrical/">
+			<img 
+			src = "https://www.bradley.edu/dotAsset/6b01d8de-36f7-498f-8e6c-05101f0206c6.png"
+			alt = "Bradley University Electrical Engineering"
+			height = "60" 
+			width = "180">
+		</a>
+	</div>
+
+
+	<div id = "mySidenav" class= "sidenav">
+		<a href = "./">Home</a>
+		<a href = "finalReport">Final Report</a>
+		<a href = "proposal">Proposal</a>
+		<a href = "code">Code</a>
+		<a href = "projectManagement">Project<br/>Management</a>
+		<a href = "calendar">Calendar</a>
+		<a href = "aboutUs">About</a>
+	</div>
+
+	<div id = "myTopmenu" class = "topmenu">
+		<!-- Header In Link (not Link in Header)-->
+		<a href="./">
+			<h1>
+				EMG-Based Human Machine Interface
+			</h1>
+		</a>
+	</div>
+
+	<div id="mainBody1" class = "mainBody">
+		<header1>Project Proposal</header1>
+		<datePublished>Published November 9th, 2017</datePublished>
+
+		<a href = "EMG_HMI_Project_Proposal_20171128.pdf" target="_blank" border = 0 style= "text-decoration = none;"> 
+			<datePublished>|&nbsp;&nbsp;&nbsp;&nbsp;Download Proposal</datePublished> 
+		</a>
+		
+		<a href = "ProposalPresentation_20171128.pdf" target="_blank"> 
+			<datePublished>|&nbsp;&nbsp;&nbsp;&nbsp;Download Slides</datePublished> 
+		</a>
+		
+		<div id = "textBox1" class = "textBox">
+			<h1>Introduction</h1>
+				<p>
+					Electromyography (EMG) is a technique for monitoring electrical signals associated 
+					with movement of muscles. EMG signals can be obtained via an intramuscular needle, 
+					or by an electrode placed directly on the skin. Intramuscular EMG (iEMG) is more 
+					accurate than surface EMG (sEMG) but sEMG allows electrical signals to be measured 
+					without the need for intrusive or bulky measurement tools. Acquiring sEMG signals 
+					only requires electrodes to be placed on the surface of the skin, directly above 
+					the target muscle. When placed on the forearm, sEMG electrodes detect arm muscle 
+					activity associated with the movement of a user’s hand.
+				</p>
+			<h2>A. EMG Applications</h2>
+			
+				<h3>Medical Diagnosis and Rehabilitation</h3>
+					<p style="margin-left:50px;">	
+					Detection of EMG signals is becoming commonplace in the biomedical field. It is being
+					used in medical research for diagnosis and rehabilitation [1].  In the most common
+					case, an EMG test can be conducted to test for a variety of muscle and nerve related
+					conditions and injuries [2]. Conditions that EMG testing helps diagnose include
+					carpal tunnel syndrome, a pinched nerve, neuropathies, muscle diseases, muscular
+					dystrophy, and Lou Gehrig’s disease [3].<br/><br/>
+					</p>
+					
+				<h3>Prosthetic Control</h3>
+					<p style="margin-left:50px;">	
+					In research, EMG signals are used to help recovering amputees control prosthetic
+					limbs. Even if an amputee is missing a limb, their mind can still try to move the
+					limb that is not there. In doing so, electrical impulses are sent to that region
+					of the body as if the limb was still there.  For example, an individual missing
+					their forearm can have a prosthetic arm controlled by the EMG signals detected in
+					their shoulder/upper arm [4].
+					
+					<br/><br/>
+					
+					There are great strides being made in EMG based prosthetics. For example, researchers
+					at Japan’s Hokkaido University developed an EMG prosthetic hand controller that uses 
+					real-time learning to detect up to ten forearm motions with 91.5% accuracy [5]. 
+					Additionally, research done at Abu Dhabi University aimed to develop a virtual reality 
+					simulation of an arm using EMG signals. They achieved an 84% success rate in simulating 
+					the correct movements made by amputees [6].
+					</p>
+			<h2>B. Pattern Recognition Algorithms</h2>
+				<p style="margin-left:50px;">	
+					Pattern recognition is a subset of machine learning that can be broken into two main 
+					categories: supervised and unsupervised. In supervised learning, the algorithm is 
+					“trained” by giving the algorithm data that is already classified. This allows the 
+					program to have a baseline understanding of the pattern so that it knows what to 
+					look for in the future. In unsupervised learning, the algorithm is not given any 
+					classification information, and must draw inferences from data on its own [7]. “The 
+					most common unsupervised learning method is cluster analysis, which is used for 
+					exploratory data analysis to find hidden patterns or grouping in data. The clusters 
+					are modeled using a measure of similarity which is defined upon metrics such as 
+					Euclidean or probabilistic distance” [8].<br/><br/>
+					
+					A critical part of machine learning is an artificial neural network (ANN). ANN’s 
+					are designed to mimic the human brain, where neurons and axons are represented by 
+					nodes and wires. Neural networks can be designed in countless different configurations. 
+					One form of interest is the Fuzzy Neural Network (FNN) that uses Fuzzy Logic, much 
+					like humans. Instead of pure binary decision making, Fuzzy Logic incorporates any 
+					value between 0 and 1 to more accurately represent how closely a value matches a set.  
+				</p>
+				
+			<h1>Problem Statement</h1>
+				<p>
+				The current market for gesture based control of security systems rely solely on the 
+				use of cameras to detect user movements. These systems require heavy processing and 
+				restrict the user to gesture only in the field of view of the cameras. To address 
+				these issues, this project proposes a surface electromyography (sEMG) controlled 
+				security system.<br/><br/>
+				
+				There are several practical applications for using an sEMG signal to control security 
+				systems. One example is in a small business, such as a convenience store, where an 
+				employee would be responsible for monitoring security cameras while working as the 
+				cashier. This employee would benefit by being able to use the armband to control the
+				store security camera monitoring system without taking their attention away from the
+				customer. Another example would be if a manager needed to have control of warehouse 
+				cameras while working at their desk. The armband would allow the manager to browse 
+				through the camera feeds and move the cameras with minimal interruption from their 
+				work. One last example is a stay at home mom or dad trying to get work done while 
+				a baby sleeps in another room. If this family had an sEMG controlled security system,
+				they would be able to switch between monitoring the baby and checking to see who 
+				rang the doorbell without having to touch any buttons or walk to another room. All 
+				of these solutions are realizable with the sEMG human machine interface (HMI) 
+				security system.<br/><br/>
+				
+				In this project, the user’s gesture is captured by a Myo Gesture Control Armband. 
+				It houses eight electrodes for capturing sEMG signals as well as an inertial 
+				measurement unit (IMU). 
+				</p>
+				
+				<h1>Functional Description</h1>
+				
+				<h2>A. Functions and Gestures</h2>
+				
+				<table>
+					<tr>
+						<th>Function</th>
+						<th>Gesture</th> 
+						<th>Haptic Feedback</th>
+					</tr>
+					<tr>
+						<td>Toggle armband lock/unlock</td>
+						<td>Fingers spread (hold 2 sec)</td>
+						<td>Vibration (3 sec)</td>
+					</tr>
+					<tr>
+						<td>System Control Activate</td>
+						<td>CCW circle with fist</td>
+						<td>1 Vibration (1 sec)</td>
+					</tr>
+					<tr>
+						<td>Camera Control Activate</td>
+						<td>CW circle with fist</td>
+						<td>2 Vibrations (1 sec each)</td>
+					</tr>
+					<tr>
+						<td>Next Camera</td>
+						<td>1. Start with palm facing in
+						<br/>2. Move wrist outward</td>
+						<td>N/A</td>
+					</tr>
+					<tr>
+						<td>Previous Camera</td>
+						<td>1. Start with palm facing in
+						<br/>2. Move wrist inward</td>
+						<td>N/A</td>
+					</tr>
+					<tr>
+						<td>Pan Left</td>
+						<td>1. Start with palm facing in
+						<br/>2. Move wrist inward</td>
+						<td>Vibrate low while moving</td>
+					</tr>
+					<tr>
+						<td>Pan Right</td>
+						<td>1. Start with palm facing in
+						<br/>2. Move wrist outward</td>
+						<td>Vibrate low while moving</td>
+					</tr>
+					<tr>
+						<td>Tilt Up</td>
+						<td>1. Start with palm facing down
+						<br/>2. Move wrist upward</td>
+						<td>Vibrate low while moving</td>
+					</tr>
+					<tr>
+						<td>Tilt Down</td>
+						<td>1. Start with palm facing down
+						<br/>2. Move wrist downward</td>
+						<td>Vibrate low while moving</td>
+					</tr>
+					
+				</table>
+				
+				<h2>B. System Diagram</h2>
+					<p 
+						style="text-decoration:underline;text-align:center;style=margin-left:50px">
+						<img src="http://ee.bradley.edu/projects/proj2018/emg/SystemDiagram.png" alt = "System Diagram" align="middle"
+						height = "493" width = "800">
+						<br/>
+						Figure 1: System Diagram
+					</p>
+					<p style="margin-left:50px;">	
+							A Myo Armband is worn by a user, giving him/her hands-free control of a video camera system. The user has control of pan, tilt, and camera selection. The system utilizes sEMG and IMU signals from the armband to control the system. The armband wirelessly sends data to an embedded system. The embedded system is responsible for signal processing, control of camera movement and the selection of which video feed to display. Two servo motors are used to rotate each camera. Communications are setup to transmit information between the Raspberry Pi boards, servo motors and the embedded system.  
+					</p>
+					
+				<h2>C. Myo Gesture Control Armband</h2>
+					<p style="margin-left:50px;">
+						The HMI device used for this project is an sEMG armband, designed by Thalmic Labs. 
+						It uses eight sEMG sensors as well as a nine-axis IMU to detect hand and arm movement. 
+						Data is sent in real-time via Bluetooth to an embedded system.
+					</p>
+				
+				<h2>D. Embedded System</h2>
+					<p style="margin-left:50px;">
+						The embedded system is the heart of the sEMG Security Monitoring System. It receives 
+						the armband signal via a Bluetooth dongle. This signal is then processed by algorithms 
+						to identify gestures made by the user. The embedded system also generates PWM (pulse 
+						width modulation) signals to control the pan/tilt motion of the servo motors.  The 
+						video signals from the Raspberry Pi boards are transmitted to the embedded system for 
+						display.
+					</p>
+					
+				<h2>E. Servo Motors</h2>
+					<p style="margin-left:50px;">				
+						This sub-system includes one pair of servo motors per camera. The motors are attached 
+						to the case that houses the Raspberry Pi and the camera.  They are controlled by the 
+						PWM signals from the embedded system to adjust both the horizontal and vertical angle 
+						of the camera.
+					</p>
+
+				<h2>F. Raspberry Pi and Camera Assembly</h2>
+					<p style="margin-left:50px;">	
+						There are two Raspberry Pi 3B computers equipped with a Pi camera. They process the 
+						video and send it to the embedded system across the communication network. The Pi 
+						cameras have the ability to stream live video in 1080P, while also recording to an SD
+						card. 
+					</p>
+				
+				<h2>G. Monitor</h2>
+					<p style="margin-left:50px;">	
+						The monitor is set up to display the camera video output. The video is sent to the monitor
+						from the embedded system. The selection of which camera view to display is based on 
+						the gestures made by the user.
+					</p>
+			<h1>Technical Specifications</h1>
+				<h2>A. Myo Gesture Control Armband</h2>
+				<ul style="list-style-type:disk;margin-left:25px;">
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic">Physical</li>
+						<ul style="list-style-type:circle">
+							<li>Weight: 93g</li>
+							<li>Flexibility: fits arms ranging between 7.5" and 13"</li>
+							<li>Thickness: 0.45"</li>
+						</ul>
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic;">Sensors</li>
+						<ul style="list-style-type:circle">
+							<li>9-Axis IMU</li>
+								<ul style="list-style-type:square">
+									<li>3-Axis gyroscope</li>
+									<li>3-Axis accelerometer</li>
+									<li>3-Axis magnetometer</li>
+								</ul>
+							<li>Made of medical grade stainless steel</li>
+						</ul>
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic;">Computer / Communication</li>
+						<ul style="list-style-type:circle">
+							<li>ARM Cortex M4 processor</li>
+							<li>Wireless Bluetooth 4.0 LE communication</li>
+							<li>Battery</li>
+								<ul style="list-style-type:square">
+									<li>Built-in Lithium Ion Battery</li>
+									<li>Micro USB charger</li>
+									<li>1 full day of usage</li>
+								</ul>
+							<li>EMG Data</li>
+								<ul style="list-style-type:square">
+									<li>Sample rate: 200 Hz</li>
+									<li>Unitless - muscle activation is represented as an 8 bit signed value</li>
+									<li>Timestamp is in milliseconds since epoch</li>
+								</ul>
+							<li>Compatible Operating Systems (for the SDK)</li>
+								<ul style="list-style-type:square">
+									<li>Windows 7, 8, and 10</li>
+									<li>OSx 10.8 and up</li>
+									<li>Android 4.3 and up</li>
+								</ul>
+							<li>Haptic feedback with short, medium, and long vibration options</li>
+						</ul>
+				</ul>
+				
+				<h2>B. Raspberry Pi 3B</h2>
+				<ul style="list-style-type:disk;margin-left:25px;">
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic">Processor</li>
+						<ul style="list-style-type:circle">
+							<li>Broadcom BCM2387</li>
+							<li>1.2 GHz Quad-Core ARM Cortex-A53</li>
+							<li>802.11 b/g/n Wireless LAN</li>
+							<li>Bluetooh 4.1 (Classic and LE)</li>
+						</ul>
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic;">GPU</li>
+						<ul style="list-style-type:circle">
+							<li>Dual-Core VideoCore IV Multimedia Co-Processor</li>
+							<li>OpenVG and 1080p30 H.264 high-profile decoder</li>
+						</ul>
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic;">Memory</li>
+						<ul style="list-style-type:circle">
+							<li>1 GB LPDDR2</li>
+						</ul>
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic;">Operating System</li>
+						<ul style="list-style-type:circle">
+							<li>Runs Linux OS or Windows 10 IoT</li>
+							<li>Boots from MicroSD Card</li>
+						</ul>
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic;">Dimensions</li>
+						<ul style="list-style-type:circle">
+							<li>85 mm x 56 mm x 17 mm</li>
+						</ul>
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic;">Power</li>
+						<ul style="list-style-type:circle">
+							<li>Micro USB socket 5v1, 2.5A</li>
+						</ul>
+					<li style="font-weight: bold;text-decoration:underline;font-style:italic;">Peripherals</li>
+						<ul style="list-style-type:circle">
+							<li>Ethernet</li>
+								<ul style="list-style-type:square">
+									<li>10/100 BaseT socket</li>
+								</ul>
+							<li>Video Out</li>
+								<ul style="list-style-type:square">
+									<li>HDMI (rev 1.3 &1.4)</li>
+									<li>Composite RCA (PAL and NTSC)</li>
+								</ul>
+							<li>GPIO</li>
+								<ul style="list-style-type:square">
+									<li>40-Pin 2.54 mm expansion header 2x20 strip</li>
+									<li>27-Pin GPIO</li>
+									<li>+3.3V, +5V and GND supply lines</li>
+								</ul>
+							<li>Camera</li>
+								<ul style="list-style-type:square">
+									<li>15-pin MIPI Camera Serial Interface (CSI-2)</li>
+								</ul>
+							<li>Display</li>
+								<ul style="list-style-type:square">
+									<li>Display Serial Interface 15-way flat flex cable connector with 2 data lanes and a clock lane</li>
+								</ul>
+							<li>Haptic feedback with short, medium, and long vibration options</li>
+						</ul>
+				</ul>
+			
+			<h1>Preliminary Results</h1>
+				<h2>A. Raw Data</h2>
+					<p style="margin-left:50px;">	
+						While collecting preliminary data, our goal was to test the raw armband data to verify that we can see differences in the
+						data when different motions are made. The armband was placed onto the thickest part of the forearm, with sensor-4 on the top
+						of the forearm, and sensors 1 and 8 on the bottom. Two different motions were captured: palm in, wrist action out (wave out)
+						and palm in, wrist action in (wave in). <br/><br/>
+
+						The first thing we noticed, which can be seen in both Figure 2 and Figure 3, is that there is a distinct difference in the
+						EMG data when the arm muscles are activated. To prove this, we took samples in 10-second intervals and performed the actions
+						in sets of 1, 3 and 5 actions. We can clearly observe the separate actions in each data set.<br/><br/>
+
+						The second important detail we noticed was that there is a difference between the EMG sensor data when we performed
+						different actions. Figure 2 shows the EMG data when the wrist is moved outward. We can see that the most muscle activation
+						is on sensors 3, 4, and 5. Some action is observed in 2 and 6, while a relatively low amount of action is seen in sensors 1,
+						7 and 8. Figure 3 shows the EMG data for when the wrist is moved inward. In this case, we see that the most activation
+						occurs on sensors 1, 7, and 8. There is also some activation on sensors 2, 3 and 6, while almost no activation was observed
+						on sensors 4 and 5. <br/><br/>
+
+						Our goal, moving forward, will be to filter and analyze this data and then implement pattern recognition algorithms. We will
+						be testing more than just the data from one person performing two actions to increase the accuracy of our pattern 
+						recognition algorithms.<br/><br/>
+					</p>
+					
+					<img src="http://ee.bradley.edu/projects/proj2018/emg/proposalFig2.png" alt="Figure 2" align="middle" height = "500" width = "800"
+					style="text-decoration:none;margin-left:50px">
+					<p 
+						style="text-decoration:underline;text-align:center;style=margin-left:50px display:inline">
+						Figure 2: Raw EMG Data with Palm Facing In, Wrist Action Out
+					</p>
+					
+					<img src="http://ee.bradley.edu/projects/proj2018/emg/proposalFig3.png" alt="Figure 3" align="middle" height = "500" width = "800" style="text-decoration:none;margin-left:50px">
+					<p 
+						style="text-decoration:underline;text-align:center;margin-left:50px">
+						Figure 3: Raw EMG Data with Palm Facing In, Wrist Action In
+					</p>
+			<h1>Schedule</h1>
+				<h2>A. Schedule of Work</h2>
+					<h3>November:</h3>
+						<ul class = "schedule">
+							<li>Weeks 1 & 2</li>
+							<ol>
+								<li>Write project proposal</li>
+								<li>Develop full parts list and submit order to Chris Mattus</li>
+								<li>Find a way to get the raw data from the armband</li>
+								<li>Develop preliminary filtering methods</li>
+								<li>Revise the website layout. Create a home page.</li>
+							</ol>
+							<li>Weeks 3 & 4</li>
+							<ol>
+								<li>Develop project proposal presentation draft</li>
+								<li>Practice presentation</li>
+								<li>Revise project proposal for final submission</li>
+							</ol>
+						</ul>
+					<h3>December:</h3>
+						<ul class = "schedule">
+							<li>Weeks 1 & 2</li>
+								<ol>
+									<li>Finalize the website design and post all project deliverables by 12/07/17</li>
+								</ol>
+							<li>Weeks 3 & 4</li>
+								<ol>
+									<li>None (Winter Break)</li>
+								</ol>
+						</ul>
+					<h3>January:</h3>
+						<ul class = "schedule">
+							<li>Weeks 1 & 2</li>
+								<ol>
+									<li>None (Winter Break)</li>
+								</ol>
+							<li>Weeks 3 & 4</li>
+								<ol>
+									<li>Start work on gesture detection</li>
+									<li>Begin development on the Raspberry Pi</li>
+								</ol>
+						</ul>
+					<h3>February:</h3>
+						<ul class = "schedule">
+							<li>Weeks 1 & 2</li>
+								<ol>
+									<li>Configure Raspberry Pi and peripherals</li>
+									<li>Set up hardware (monitor, motors, mounts, etc.)</li>
+								</ol>
+							<li>Weeks 3 & 4</li>
+								<ol>
+									<li>Finalize and compile code</li>
+									<li>Gather all data needed for the final report</li>
+								</ol>
+						</ul>
+					<h3>March:</h3>
+						<ul class = "schedule">
+							<li>Weeks 1 & 2</li>
+								<ol>
+									<li>Begin working on final report draft</li>
+								</ol>
+							<li>Weeks 3 & 4</li>
+								<ol>
+									<li>Make poster</li>
+									<li>Finish final report draft</li>
+								</ol>
+						</ul>
+					<h3>April:</h3>
+						<ul class = "schedule">
+							<li>Weeks 1 & 2</li>
+								<ol>
+									<li>Practice poster presentation</li>
+									<li>Begin drafting project presentation</li>
+								</ol>
+							<li>Weeks 3 & 4</li>
+								<ol>
+									<li>Finalize project presentation</li>
+									<li>Practice project presentation</li>
+									<li>Finalize project report</li>
+								</ol>
+						</ul>
+				<h2>Deadlines and Important Dates</h2>
+					<h3>November:</h3>
+						<ul class = "deadlines">
+							<li>11/07 &ndash; Project Parts Order</li>
+							<li>11/09 &ndash; Project Proposal Draft</li>
+							<li>11/28 &ndash; Project Proposal Presentation Draft</li>
+							<li>11/29 &ndash; Project Proposal Final Draft</li>
+						</ul>
+					<h3>December:</h3>
+						<ul class = "deadlines">
+							<li>12/07 &ndash; Project Website with Deliverables</li>
+						</ul>
+					<h3>January - February:</h3>
+						<ul class = "deadlines">
+							<li>None</li>
+						</ul>
+					<h3>March:</h3>
+						<ul class = "deadlines">
+							<li>03/09 &ndash; Student Expo Registration</li>
+							<li>03/27 &ndash; Final Report Draft</li>
+							<li>03/29 &ndash; Student Expo Abstract</li>
+						</ul>
+					<h3>April:</h3>
+						<ul class = "deadlines">
+							<li>04/05 &ndash; Poster Printing</li>
+							<li>04/10 &ndash; Student Expo Poster Setup</li>
+							<li>04/12 &ndash; Student Expo Poster Judging</li>
+							<li>04/13 &ndash; Student Expo Award Ceremony</li>
+							<li>04/17 &ndash; Final Presentation Draft</li>
+							<li>04/19 &ndash; Project Demonstration</li>
+							<li>04/27 &ndash; Industrial Advisory Board Poster Sessrion</li>
+							<li>04/28 &ndash; Senior Project Conference</li>
+						</ul>
+					<h3>May:</h3>
+						<ul class = "deadlines">
+							<li>05/01 &ndash; All deliverables completed and posted to website</li>
+						</ul>
+			<h1>Summary</h1>
+				<p>
+					By capturing the electrical signals that are sent through the arm muscles as
+					they are activating, we can develop algorithms that recognize patterns and be
+					able to differentiate between various hand/wrist motions. With current 
+					technology, controlling a system with human gestures is limited. We intend to 
+					step up the gesture-based human machine interface industry and develop a 
+					security monitoring system that is controlled by a user. The user will wear 
+					an armband that will collect and transmit surface electromyography (sEMG) 
+					data via Bluetooth.<br/><br/>
+					
+					Our goal is to make a system where a user will be able to use arm motions to 
+					control which camera feed, in a system of multiple cameras, is displayed on a 
+					monitor. The user will also have control of pan and tilt motors to adjust the 
+					camera viewing areas.
+				</p>
+			<h1>References</h1>
+				<ol class = "references">
+					<a href="https://biologicalproceduresonline.biomedcentral.com/track/pdf/10.1251/bpo115?site=http://biologicalproceduresonline.biomedcentral.com">
+						<li>M. B. I. Reaz, M. S. Hussain, and F. Mohd-Yasin, “Techniques of EMG signal analysis: detection, processing, classification and applications,” Biological Procedures Online, vol. 8, no. 1, pp. 163–163, Oct. 2006. </li>
+					</a>
+					<a href="https://medlineplus.gov/ency/article/003929.htm">
+						<li>“Electromyography,” Medline Plus, 06-Nov-2017. [Online]. Available: https://medlineplus.gov/ency/article/003929.htm. [Accessed: 10-Nov-2017].</li>
+					</a>
+					<a href="https://www.hss.edu/conditions_emg-testing-a-patient-guide.asp">
+						<li>J. H. Feinberg, “EMG Testing: A Patients Guide,” Hospital for Special Surgery, 21-Oct-2009. [Online]. Available: https://www.hss.edu/conditions_emg-testing-a-patient-guide.asp. [Accessed: 05-Nov-2017].</li>
+					</a>
+					<a href="https://ac.els-cdn.com/S1877705812023223/1-s2.0-S1877705812023223-main.pdf?_tid=fffa95e4-bfe6-11e7-abf4-00000aacb35e&acdnat=1509638631_ba71bcf227a3850a4d83773748052355">
+						<li>S. Sudarsan and E. C. Sekaran, “Design and Development of EMG Controlled Prosthetics Limb,” Procedia Engineering, vol. 38, pp. 3547–3551, Sep. 2012.</li>
+					</a>
+					<a href="https://www.researchgate.net/publication/251998419_Real_time_virtual_prosthetic_hand_controlled_using_EMG_signals">
+						<li>L. Fraiwan, M. Awwad, M. Mahdawi, and S. Jamous, “Real time virtual prosthetic hand controlled using EMG signals,” in Biomedical Engineering (MECBME), 2011 1st Middle East Conference on, 2011, pp. 225-227.</li>
+					</a>
+					<a href="http://www.astro.caltech.edu/~george/aybi199/Donalek_Classif.pdf">
+						<li>C. Donalek, “Supervised and Unsupervised Learning,” Caltech Astronomy, Apr-2011. [Online]. Available: http://www.astro.caltech.edu/~george/aybi199/Donalek_Classif.pdf . [Accessed: 01-Nov-2017].</li>
+					</a>
+					<a href="https://www.mathworks.com/discovery/unsupervised-learning.html">
+						<li>“Unsupervised Learning,” MATLAB & Simulink. [Online]. Available: https://www.mathworks.com/discovery/unsupervised-learning.html. [Accessed: 14-Nov-2017].</li>
+					</a>
+				</ol>
+		</div>
+	</div>
+
+<!-- This is the javascript portion of the page -->
+<script>
+
+	<!-- function refreshFromServer() -->
+	<!-- { -->
+		<!-- location.reload(true); -->
+	<!-- } -->
+	
+</script>
+     
+</body>
+</html> 
+
+
