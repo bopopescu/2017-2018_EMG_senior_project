@@ -1,0 +1,284 @@
+/**
+ * Created By: Aditya Patel and James Ramsay
+ * Organization: Bradley University ECE
+ * Project: 2017-2018 EMG HMI
+ * Filename: emgStyle.css 
+ */
+
+/******************************************************************
+							INITIALIZATION
+*******************************************************************/
+body 
+{
+    font-family: "Segoe UI", sans-serif;
+	overflow-x: hidden;
+}
+
+/******************************************************************
+							TOP MENU
+*******************************************************************/
+.topmenu
+{
+	height: 80px;
+	width: 100%;
+	position: absolute;
+	z-index: 1; /* higher z-index means it is layered on top */
+	top: 0;
+	left: 200px;
+	background-color: #A50000;
+	overflow-x: hidden;
+	overflow-y: hidden;
+}
+
+.topmenu h1
+{
+	position: absolute;
+	top: 0;
+    font-size: 50px;
+	font-weight: bold;
+	line-height: 20px;
+	color: #FFFFFF;
+    text-align: left;
+	padding-left: 20px;
+}
+
+iframe.calendar 
+{
+	padding-top: 20px;
+	border: none;
+	color: #A50000;
+}
+
+iframe.trello
+{
+	padding-top: 20px;
+	border: none;
+	color: #A50000;
+	-ms-transform: matrix(0.7, 0, 0, 0.7, -250, -212);
+	-webkit-transform: matrix(0.7, 0, 0, 0.7, -250, -212);
+	transform: matrix(0.7, 0, 0, 0.7, -250, -145 );/* matrix(scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY()) */
+	
+}
+
+/******************************************************************
+							BRADLEY LOGO
+*******************************************************************/
+.bradleyLogo img
+{
+	z-index: 3;
+	padding: 10px 0 10px 8px;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+/******************************************************************
+							SIDE MENU
+*******************************************************************/
+.sidenav /* The style of the side bar */
+{
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: #A50000; /* Bradley Red */
+    overflow-x: hidden; /* this cuts off text that goes outside the box */
+    transition: 0.5s; /* Time it takes to open this menu */
+    padding-top: 90px;
+}
+
+.sidenav a /* This determines the style of each entry in the side menu */
+{
+    padding: 8px 8px 8px 32px; /* top, right, bottom, left */
+    outline: 0; /* Remove the outline when the link is clicked/active */
+	text-decoration: none;
+    font-size: 150%;
+    color: #FFFFFF;
+    display: block;
+    transition: 0.2s; /* The time it takes to transition to the hover color */
+}
+
+.sidenav a:hover /* Enlarges the text when hovered */
+{
+    font-size: 175%; 
+}
+
+/******************************************************************
+							MAIN BODY
+*******************************************************************/
+.mainBody
+{
+	margin: 80px 20px 0px 220px; /* top, right, bottom, left */ 
+}
+
+.mainBody header1 
+{
+	margin: auto;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: inline-block;
+	z-index: 2;
+	font-weight: bold;
+    font-size: 175%;
+	text-decoration: underline;
+	color: black;
+}
+
+.mainBody datePublished
+{
+	padding-top: 20px;
+	padding-left: 1em;
+	padding-bottom: 20px;
+	/* display: inline-block; */
+	text-decoration: none;
+	z-index: 2;
+	color: #666666;
+    font-size: 80%;
+}
+
+a /* This was used to remove the ghost underscore between consecutive href elements */
+{
+	text-decoration:none;
+}
+
+.mainBody LinkedInBadge
+{
+	display: inline-block;
+}
+
+
+/******************************************************************
+							TEXT BOX
+*******************************************************************/
+.textBox
+{
+	z-index: 1;
+	margin: 0px 0px 0px 0px; /* top, right, bottom, left */
+	padding: 0px 25px 0 25px;
+	width: 80%;
+	height: 100%;
+	border: none;
+	background-color: #F2F2F2;
+}
+
+.textBox h1 
+{
+	z-index: 2;
+	display: block;
+    font-size: 150%;
+	color: #A50000;
+}
+
+.textBox h2 
+{
+	z-index: 2;
+	display: block;
+	text-indent: 25px;
+    font-size: 125%;
+	color: #000;
+}
+
+.textBox h3
+{
+	line-height: 0;
+	z-index: 2;
+	font-size: 100%;
+	font-weight: normal;
+	text-indent: 50px;
+	text-decoration: underline;
+	color: #000;
+}
+
+.textBox h4
+{
+	
+}
+
+
+.textBox p /* Main Body Text Style */
+{
+	z-index: 2;
+	display: block;
+    font-size: 100%; 
+	color: black;
+	text-decoration: none;
+	font-weight: normal;
+}
+
+
+/******************************************************************
+							TABLE
+*******************************************************************/
+table
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	width: 90%;
+	margin: 0px 50px 0 50px;
+}
+
+th /* table header */
+{
+	font-weight: bold;
+	font-size: 110%;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+td /* table data */
+{
+	font-size: 90%;
+	border: 1px solid black;
+	border-collapse: collapse;
+	padding: 5px;
+}
+
+tr:nth-child(even){background-color: #ccc;} /* table rows */
+
+/******************************************************************
+							LIST
+*******************************************************************/
+ul li
+{
+	margin: 5px 0;
+}
+
+ul.schedule
+{
+	list-style-type: none;
+	margin-left: 50px;
+}
+
+ul.schedule > li /* apply style only to direct children */
+{
+	font-style:italic;
+}
+
+ul.deadlines
+{
+	list-style-type: none;
+	margin-left: 50px;
+}
+
+ol li
+{
+	margin: 5px 0;
+}
+
+ol.references li /* Add extra line spacing to all children "li" elements in the "references" class*/
+{
+	margin: 15px 0;
+}
+
+/******************************************************************
+					Adapting to Different Screens
+*******************************************************************/
+/* @media screen and (max-width:1000px)/* When the window is smaller than 1000 pixels, decrease the size of the text */ */
+/* { */
+	/* .topmenu h1 { font-size: 100%; } */
+	/* .sidenav a { font-size: 100%; }   */
+	/* p {font-size: 50%} */
+/* } */
+
+
