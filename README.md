@@ -23,3 +23,5 @@ Please refer to the setup guide in the documentation folder to see how we config
 ## System Flowchart
 ![System Flowchart](https://raw.githubusercontent.com/abpatel2/2017-2018_EMG_senior_project/master/00-Documentation/FlowChart_20180404.png)
 
+## System Flowchart
+![System Flowchart](http://ee.bradley.edu/projects/proj2018/emg/FlowChart_20180415.png)
