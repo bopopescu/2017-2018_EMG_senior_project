@@ -6,7 +6,7 @@ LAST MODIFIED: 2018-04-12
 PLATFORM: Raspberry Pi 3B, Raspbian Stretch Released 2017-11-29
 PROJECT: EMG Human Machine Interface
 ORGANIZATION: Bradley University, School of Electrical and Computer Engineering
-FILENAME: myo_raw.py
+FILENAME: main.py
 DESCRIPTION:
 	Main script that:
 		- initializes/executes bluetooth protocol (not written by Aditya/Jim -- see note below)
