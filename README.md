@@ -4,6 +4,8 @@ A senior project conducted by Jim Ramsay and Aditya Patel, advised by Dr. Yufeng
 Sponsored by Bradley University,
 Department of Electrical and Computer Engineering 
 
+Credit to [Fernando Cosentino](http://www.fernandocosentino.net/pyoconnect/) and [dzhu](https://github.com/dzhu/myo-raw) for developing the python code upon which this project is based. 
+
 ## Abstract
 Surface Electromyography (EMG) is a non-invasive technique which records the electrical activity of muscles through electrodes 
 placed directly on the arm. This project aims to develop an EMG-based control system. A Myo Armband, containing eight electrode 
