@@ -12,8 +12,8 @@ DESCRIPTION:
 		- initializes/executes bluetooth protocol (not written by Aditya/Jim -- see note below)
 		- starts reading emg data. 
 		- detects gestures
-		- commands two slave raspberry pi's to rotate servo motors
-		- switches between displaying video feed from each of the slaves
+		- commands two subordinate raspberry pi's to rotate servo motors
+		- switches between displaying video feed from each of the subordinates
 		
 	Gestures (right hand only, have not tested on left hand):
 		rest -- do nothing, arm relaxed
@@ -21,11 +21,11 @@ DESCRIPTION:
 		piwo -- palm in, wrist out (wave outward)
 		piwi -- palm in, wrist in (wave inward)
 	
-	Master: 
+	Main: 
 		emgPi_3 -- pi@169.254.12.52 password is "ee00"
 	
-	Slaves:
-		ssh commands recognize the defined names for the slaves using ssh_keys. Using the defined
+	Subordinates:
+		ssh commands recognize the defined names for the subordinates using ssh_keys. Using the defined
 		names and saved keys bypasses password requirements. 
 		
 		emgPi_1 -- pi@169.254.184.5  password is "ee00"
@@ -582,7 +582,7 @@ def controlLogic(mode, gesture, confidence):
 		else:
 		
 			if ( time.time() > t_endWaiting ):
-				''' Select which slave to control '''
+				''' Select which subordinate to control '''
 				if ( curPi == 0 ):
 					
 					curPi_name = "emgPi_1"
